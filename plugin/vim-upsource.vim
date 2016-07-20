@@ -18,8 +18,8 @@ function! GetUpsourceProjectId()
     let hash = system("git log -1 --format=\"%H\"")
     let proc = " awk -F\"[,:}]\" '{for(i=1;i<=NF;i++){if($i~/\042'projectId'\042/){print $(i+1)}}}' | tr -d '\"' | sed -n ${num}p | head -1"
     let req  =  " '{\"commits\" : {\"revisionId\" : \"". hash . "\"} }' "
-    let url  =  " https://upsource.tools.russianpost.ru/~rpc/findCommits "
-    let cmd = 'curl -s --user aponkin:JPWWh2u9Kz -i -X POST -d' . req . url . "|" . proc
+    let url  =  " https://upsource.server.ru/~rpc/findCommits "
+    let cmd = 'curl -s --user ponkin:**** -i -X POST -d' . req . url . "|" . proc
     let res = system(cmd)
     echo res
 endfunction
